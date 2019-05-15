@@ -13,6 +13,8 @@
 # Hibernate Framework
 - The database connections settings scan be modified in hibernate.cfg.xml
 # Spring Framework
+- Project with security, the default access can be found in SecurityConfig.java
+- Projects with dynamic security, new users can be registered for access
 - If using hibernate the database conenction settings can be modified in hibernate.cfg.xml
 - If using JPA the database conenction settings can be mofified in JPAConfig.java
 # Other Projects
