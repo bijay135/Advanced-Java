@@ -5,6 +5,7 @@
 - Maven
 - Hibernate Framework
 - Spring Framework
+- Few apps using these topics
 # Running the projects
 - The projects has be structured here only for view
 - When running git clone this meta folder and run projects individually
