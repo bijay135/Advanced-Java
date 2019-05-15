@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Student List</title>
+<link rel="stylesheet" th:href="@{/static/bulma.min.css}" />
+<style type="text/css">
+.table th, .table td {
+	vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+	<section class="section" style="padding: 0.5rem 1.5rem;">
+		<div class="container">
+			<div class="columns">
+				<div class="column">
+					<h1 class="title">Student List</h1>
+					<h2 class="subtitle">All students data.</h2>
+				</div>
+				<div class="column">
+					<h2 class="subtitle" style="text-align: right;">
+						<form th:action="@{/logout}" method="POST">
+							<span th:text="${'Hi, ' + username + '!'}"></span>
+							<button type="submit" class="button is-link is-small">logout</button>
+						</form>
+					</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="container">
+		<div class="columns">
+			<div class="column is-full">
+				<div class="field is-grouped">
+					<div class="control">
+						<a th:href="@{/add-student}" class="button is-success is-small">Add
+							Student</a>
+					</div>
+				</div>
+				<table
+					class="table content is-small is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Age</th>
+							<th>Gender</th>
+							<th>Address</th>
+							<th>Phone No.</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<td colspan="6">
+								<strong>Total Records :</strong>
+								<span th:text="${students.size()}"></span>
+							</td>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr th:each="student : ${students}">
+							<td th:text="${student.name}">${student.name}</td>
+							<td th:text="${student.age}">${student.age}</td>
+							<td th:text="${student.gender}">${student.gender}</td>
+							<td th:text="${student.address}">${student.address}</td>
+							<td th:text="${student.phoneNo}">${student.phoneNo}</td>
+							<td>
+								<a th:href="@{/edit-student(id=${student.id})}"
+									class="button is-primary is-small">Edit</a>
+								<a th:href="@{/delete-student(id=${student.id})}"
+									class="button is-danger is-small">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

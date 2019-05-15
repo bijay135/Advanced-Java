@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Student Form</title>
+<link rel="stylesheet" th:href="@{/static/bulma.min.css}" />
+</head>
+<body>
+
+	<section class="section" style="padding: 0.5rem 1.5rem;">
+		<div class="container">
+			<div class="columns">
+				<div class="column">
+					<h1 class="title">Student Form</h1>
+					<h2 class="subtitle">All the data submitted to the form should
+						be correct.</h2>
+				</div>
+				<div class="column">
+					<h2 class="subtitle" style="text-align: right;">
+						<form th:action="@{/logout}" method="POST">
+							<span th:text="${'Hi, ' + username + '!'}"></span>
+							<button type="submit" class="button is-link is-small">logout</button>
+						</form>
+					</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="container">
+		<div class="columns">
+			<div class="column is-full">
+				<div class="box">
+					<form th:action="@{${#httpServletRequest.requestURI}}"
+						th:object="${student}" method="POST">
+						<input th:field="*{id}" type="hidden" />
+						<div class="field">
+							<label class="label is-small">Name</label>
+							<div class="control">
+								<input th:field="*{name}" class="input is-small" />
+							</div>
+						</div>
+						<div class="field">
+							<label class="label is-small">Age</label>
+							<div class="control">
+								<input th:field="*{age}" class="input is-small" />
+							</div>
+						</div>
+						<div class="field">
+							<label class="label is-small">Gender</label>
+							<div class="control">
+								<input th:field="*{gender}" class="input is-small" />
+							</div>
+						</div>
+						<div class="field">
+							<label class="label is-small">Address</label>
+							<div class="control">
+								<input th:field="*{address}" class="input is-small" />
+							</div>
+						</div>
+						<div class="field">
+							<label class="label is-small">Phone No.</label>
+							<div class="control">
+								<input th:field="*{phoneNo}" class="input is-small" />
+							</div>
+						</div>
+						<div class="field is-grouped">
+							<div class="control">
+								<button class="button is-success is-small">Submit</button>
+							</div>
+							<div class="control">
+								<a th:href="@{/students}" class="button is-danger is-small">Cancel</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Sign Up</title>
+<link rel="stylesheet" th:href="@{/static/bulma.min.css}" />
+</head>
+<body>
+
+	<section class="hero is-fullheight">
+		<div class="hero-body">
+			<div class="container">
+				<div class="columns is-centered">
+					<div class="column is-6-tablet is-5-desktop is-4-widescreen">
+						<h1 class="title">Sign Up Form</h1>
+						<div th:if="${param.invalid} != null"
+							class="notification is-danger">Both email and password
+							field shouldn't be empty.</div>
+						<div th:if="${param.exists} != null"
+							class="notification is-danger">
+							This email is already registered. Try to
+							<strong>
+								<a th:href="@{/login}">login</a>
+							</strong>
+							with this email.
+						</div>
+						<form th:action="@{/sign-up}" th:object="${user}" method="POST"
+							class="box">
+							<div class="field">
+								<label class="label">Email</label>
+								<div class="control">
+									<input type="email" th:field="*{email}"
+										placeholder="e.g. abc@example.com" class="input" />
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Password</label>
+								<div class="control">
+									<input type="password" th:field="*{password}"
+										placeholder="*******" class="input" />
+								</div>
+							</div>
+							<div class="field buttons">
+								<button type="submit"
+									class="button is-primary is-outlined is-rounded is-fullwidth">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>
